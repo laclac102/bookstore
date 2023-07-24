@@ -9,6 +9,7 @@ import {
   CardActionArea,
   Typography,
   CardContent,
+  Alert,
 } from "@mui/material";
 import { ClipLoader } from "react-spinners";
 import { useNavigate } from "react-router-dom";
@@ -19,7 +20,7 @@ const BACKEND_API = process.env.REACT_APP_BACKEND_API;
 
 const ReadingPage = () => {
   const dispatch = useDispatch();
-  const { favorites, loading } = useSelector((state) => state.books);
+  const { favorites, loading, error } = useSelector((state) => state.books);
   const [removedBookId, setRemovedBookId] = useState("");
   const navigate = useNavigate();
 
@@ -52,7 +53,9 @@ const ReadingPage = () => {
         <Box sx={{ textAlign: "center", color: "primary.main" }}>
           <ClipLoader color="inherit" size={150} loading={true} />
         </Box>
-      ) : (
+      ) : error ? (
+          <Alert severity="error">{error}</Alert>
+        ) : (
         <Stack
           direction="row"
           spacing={2}

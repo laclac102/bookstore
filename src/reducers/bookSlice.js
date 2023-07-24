@@ -13,11 +13,11 @@ const initialState = {
 
 export const getBookList = createAsyncThunk(
   "books/getBookList",
-  async ({ page, limit, query }, thunkApi) => {
-    let url = `books?page=${page}&limit=${limit}`;
-    if (query) url += `&query=${query}`;
+  async ({ pageNum, limit, query }, thunkApi) => {
+    let url = `books?_page=${pageNum}&_limit=${limit}`;
+    if (query) url += `&q=${query}`;
     const res = await apiService.get(url);
-    return res.data;
+    return res && res.data;
   }
 );
 
@@ -64,7 +64,7 @@ export const bookSlice = createSlice({
       .addCase(getBookList.rejected, (state, action) => {
         state.status = "rejected";
         state.loading = false;
-        state.books = action.error.message;
+        state.error = action.error.message;
       });
     builder
       .addCase(getBook.pending, (state, action) => {
@@ -95,6 +95,7 @@ export const bookSlice = createSlice({
       .addCase(addToFavorite.rejected, (state, action) => {
         state.status = "rejected";
         state.loading = false;
+        state.error = action.error.message;
       });
     builder
       .addCase(getFavorite.pending, (state, action) => {
