@@ -61,7 +61,7 @@ const HomePage = () => {
     <Container>
       <Stack sx={{ display: "flex", alignItems: "center", m: "2rem" }}>
         <Typography variant="h3" sx={{ textAlign: "center" }}>
-          Book Store
+          Game Is On
         </Typography>
         {error && <Alert severity="error">{error}</Alert>}
         <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>

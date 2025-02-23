@@ -74,7 +74,7 @@ const BookDetailPage = () => {
                   variant="outlined"
                   sx={{ width: "fit-content" }}
                   onClick={() => addToReadingList(book)}>
-                  Add to Reading List
+                  Add to Cart
                 </Button>
               </Stack>
             )}

@@ -41,21 +41,21 @@ const ReadingPage = () => {
     if (!removedBookId) return;
     dispatch(removeFavorite({ removedBookId }));
     setRemovedBookId("");
-    console.log("removed:",removedBookId );
+    console.log("removed:", removedBookId);
   }, [removedBookId]);
 
   return (
     <Container>
       <Typography variant="h3" sx={{ textAlign: "center" }} m={3}>
-        Book Store
+        Game Is On
       </Typography>
       {loading ? (
         <Box sx={{ textAlign: "center", color: "primary.main" }}>
           <ClipLoader color="inherit" size={150} loading={true} />
         </Box>
       ) : error ? (
-          <Alert severity="error">{error}</Alert>
-        ) : (
+        <Alert severity="error">{error}</Alert>
+      ) : (
         <Stack
           direction="row"
           spacing={2}

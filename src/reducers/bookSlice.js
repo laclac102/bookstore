@@ -30,7 +30,7 @@ export const addToFavorite = createAsyncThunk(
   "books/addToFavorite",
   async ({ addingBook }) => {
     await apiService.post(`/favorites`, addingBook);
-    toast.success("The book has been added to the reading list!");
+    toast.success("The item is added to your cart!");
   }
 );
 
@@ -42,7 +42,7 @@ export const removeFavorite = createAsyncThunk(
   "books/removeFavorite",
   async ({ removedBookId }) => {
     await apiService.delete(`/favorites/${removedBookId}`);
-    toast.success("The book has been removed");
+    toast.success("The item has been removed from your cart");
   }
 );
 export const bookSlice = createSlice({
